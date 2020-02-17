@@ -1,14 +1,11 @@
-﻿using System;
+﻿using EMS.Search.Entities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EMS.Search.Entities;
 
 namespace EMS.Search.Controller.DTO
 {
     public class UniversityDTO : DataDTO
     {
-        public long Id { get; set; }
+        public long? Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
@@ -32,10 +29,10 @@ namespace EMS.Search.Controller.DTO
 
     public class UniversityFilterDTO : FilterDTO
     {
-        public IdFilter Id { get; set; }
+        public long Id { get; set; }
         public StringFilter Code { get; set; }
         public StringFilter Name { get; set; }
-        public StringFilter Year { get; set; }
+        public string Year { get; set; }
         public UniversityOrder OrderBy { get; set; }
         public UniversityFilterDTO() : base()
         {

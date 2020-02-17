@@ -1,21 +1,19 @@
-﻿using System;
+﻿using EMS.Search.Entities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EMS.Search.Entities;
 
 namespace EMS.Search.Controller.DTO
 {
     public class University_MajorsDTO : DataDTO
     {
         public long Id { get; set; }
-        public long UniversityId { get; set; }
+        public long? UniversityId { get; set; }
         public string UniversityCode { get; set; }
         public string UniversityName { get; set; }
-        public long MajorsId { get; set; }
+        public long? MajorsId { get; set; }
         public string MajorsCode { get; set; }
         public string MajorsName { get; set; }
         public string Year { get; set; }
+        public List<University_Majors_SubjectGroupDTO> university_Majors_SubjectGroupDTO { get; set; }
 
         public University_MajorsDTO() { }
 
@@ -35,10 +33,10 @@ namespace EMS.Search.Controller.DTO
     public class University_MajorsFilterDTO : FilterDTO
     {
         public IdFilter Id { get; set; }
-        public long UniversityId { get; set; }
+        public IdFilter UniversityId { get; set; }
         public StringFilter UniversityCode { get; set; }
         public StringFilter UniversityName { get; set; }
-        public long? MajorsId { get; set; }
+        public IdFilter MajorsId { get; set; }
         public StringFilter MajorsCode { get; set; }
         public StringFilter MajorsName { get; set; }
         public string Year { get; set; }

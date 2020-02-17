@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EMS.Search.Entities;
+﻿using EMS.Search.Entities;
 using EMS.Search.Repositories;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EMS.Search.Services.MUniversity_Majors
 {

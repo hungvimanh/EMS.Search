@@ -1,7 +1,6 @@
 ﻿using EMS.Search.Controller.DTO;
 using EMS.Search.Entities;
 using EMS.Search.Services.MUniversity_Majors;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;

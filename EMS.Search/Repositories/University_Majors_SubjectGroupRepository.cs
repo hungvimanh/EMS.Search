@@ -1,10 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using EMS.Search.Entities;
+using EMS.Search.Repositories.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EMS.Search.Entities;
-using EMS.Search.Repositories.Models;
 
 namespace EMS.Search.Repositories
 {
@@ -26,15 +25,15 @@ namespace EMS.Search.Repositories
         {
             if (university_Majors_SubjectGroupFilter == null)
                 return query.Where(q => 1 == 0);
-            if (university_Majors_SubjectGroupFilter.University_MajorsId.HasValue)
-                query = query.Where(q => q.University_MajorsId.Equals(university_Majors_SubjectGroupFilter.University_MajorsId));
+            if (university_Majors_SubjectGroupFilter.University_MajorsId != null)
+                query = query.Where(q => q.University_MajorsId, university_Majors_SubjectGroupFilter.University_MajorsId);
             
             if (university_Majors_SubjectGroupFilter.UniversityId != null)
-                query = query.Where(q => q.University_Majors.UniversityId.Equals(university_Majors_SubjectGroupFilter.UniversityId));
+                query = query.Where(q => q.University_Majors.UniversityId, university_Majors_SubjectGroupFilter.UniversityId);
             if (university_Majors_SubjectGroupFilter.MajorsId != null)
-                query = query.Where(q => q.University_Majors.MajorsId.Equals(university_Majors_SubjectGroupFilter.MajorsId));
+                query = query.Where(q => q.University_Majors.MajorsId, university_Majors_SubjectGroupFilter.MajorsId);
             if (university_Majors_SubjectGroupFilter.SubjectGroupId != null)
-                query = query.Where(q => q.SubjectGroupId.Equals(university_Majors_SubjectGroupFilter.SubjectGroupId));
+                query = query.Where(q => q.SubjectGroupId, university_Majors_SubjectGroupFilter.SubjectGroupId);
 
             if (university_Majors_SubjectGroupFilter.UniversityCode != null)
                 query = query.Where(q => q.University_Majors.University.Code, university_Majors_SubjectGroupFilter.UniversityCode);

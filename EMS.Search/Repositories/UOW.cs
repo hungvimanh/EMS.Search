@@ -9,7 +9,6 @@ namespace EMS.Search.Repositories
         Task Begin();
         Task Commit();
         Task Rollback();
-        IMajorsRepository MajorsRepository { get; }
         IUniversity_MajorsRepository University_MajorsRepository { get; }
         IUniversityRepository UniversityRepository { get; }
         IUniversity_Majors_SubjectGroupRepository University_Majors_SubjectGroupRepository { get; }
@@ -17,7 +16,6 @@ namespace EMS.Search.Repositories
     public class UOW : IUOW
     { 
         private EMSContext eMSContext;
-        public IMajorsRepository MajorsRepository { get; private set; }
         public IUniversity_MajorsRepository University_MajorsRepository { get; private set; }
         public IUniversity_Majors_SubjectGroupRepository University_Majors_SubjectGroupRepository { get; private set; }
         public IUniversityRepository UniversityRepository { get; private set; }
@@ -25,7 +23,6 @@ namespace EMS.Search.Repositories
         public UOW(EMSContext _eMSContext)
         {
             eMSContext = _eMSContext;
-            MajorsRepository = new MajorsRepository(eMSContext);
             University_MajorsRepository = new University_MajorsRepository(eMSContext);
             University_Majors_SubjectGroupRepository = new University_Majors_SubjectGroupRepository(eMSContext);
             UniversityRepository = new UniversityRepository(eMSContext);

@@ -1,10 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using EMS.Search.Entities;
+using EMS.Search.Repositories.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EMS.Search.Entities;
-using EMS.Search.Repositories.Models;
 
 namespace EMS.Search.Repositories
 {
@@ -26,12 +25,13 @@ namespace EMS.Search.Repositories
         {
             if (university_MajorsFilter == null)
                 return query.Where(q => 1 == 0);
-            if (university_MajorsFilter.UniversityId.HasValue)
-                query = query.Where(q => q.UniversityId.Equals(university_MajorsFilter.UniversityId.Value));
             if (university_MajorsFilter.Year != null)
                 query = query.Where(q => q.Year.Equals(university_MajorsFilter.Year));
-            if (university_MajorsFilter.MajorsId.HasValue)
-                query = query.Where(q => q.MajorsId.Equals(university_MajorsFilter.MajorsId.Value));
+
+            if (university_MajorsFilter.UniversityId != null)
+                query = query.Where(q => q.UniversityId, university_MajorsFilter.UniversityId);
+            if (university_MajorsFilter.MajorsId != null)
+                query = query.Where(q => q.MajorsId, university_MajorsFilter.MajorsId);
 
             if (university_MajorsFilter.MajorsCode != null)
                 query = query.Where(q => q.Majors.Code, university_MajorsFilter.MajorsCode);

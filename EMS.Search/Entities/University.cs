@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace EMS.Search.Entities
 {

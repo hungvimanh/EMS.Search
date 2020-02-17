@@ -1,14 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EMS.Search.Controller.DTO;
+﻿using EMS.Search.Controller.DTO;
 using EMS.Search.Entities;
 using EMS.Search.Services.MUniversity;
 using EMS.Search.Services.MUniversity_Majors;
-using EMS.Search.Services.MUniversity_Majors_Majors;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace EMS.Search.Controller.university
 {
@@ -26,39 +23,20 @@ namespace EMS.Search.Controller.university
 
         #region Read
         [Route(Route.GetUniversity), HttpPost]
-        public async Task<UniversityDTO> Get([FromBody] University_MajorsFilterDTO university_MajorsFilterDTO)
+        public async Task<UniversityDTO> Get([FromBody] UniversityFilterDTO universityFilterDTO)
         {
             if (!ModelState.IsValid)
                 throw new MessageException(ModelState);
 
-            var univer = await UniversityService.Get(university_MajorsFilterDTO.UniversityId);
+            var univer = await UniversityService.Get(universityFilterDTO.Id);
 
             List<University_Majors_SubjectGroup> listUniversity_Majors_SubjectGroup = await University_Majors_SubjectGroupService.List(new University_Majors_SubjectGroupFilter 
             { 
-                UniversityId = univer.Id,
-                Year = university_MajorsFilterDTO.Year,
-                Skip = university_MajorsFilterDTO.Skip,
-                Take = university_MajorsFilterDTO.Take,
-                OrderBy = University_Majors_SubjectGroupOrder.MajorsCode
+                UniversityId = new IdFilter { Equal = universityFilterDTO.Id },
+                Year = universityFilterDTO.Year,
             });
 
-            var listUniversity_Majors_SubjectGroupDTO = listUniversity_Majors_SubjectGroup.Select(u => new University_Majors_SubjectGroupDTO
-            {
-                Id = u.Id,
-                MajorsId = u.MajorsId,
-                MajorsCode = u.MajorsCode,
-                MajorsName = u.MajorsName,
-                UniversityId = u.UniversityId,
-                UniversityCode = u.UniversityCode,
-                UniversityName = u.UniversityName,
-                SubjectGroupId = u.SubjectGroupId,
-                SubjectGroupCode = u.SubjectGroupCode,
-                SubjectGroupName = u.SubjectGroupName,
-                Benchmark = u.Benchmark,
-                Note = u.Note,
-                Quantity = u.Quantity,
-                Year = u.Year
-            }).OrderByDescending(u => u.Year).ToList();
+            var listUniversity_Majors_SubjectGroupDTO = listUniversity_Majors_SubjectGroup.Select(u => new University_Majors_SubjectGroupDTO(u)).OrderByDescending(u => u.Year).ToList();
             if (univer == null) return null;
             else
             {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace EMS.Search.Entities
+﻿namespace EMS.Search.Entities
 {
     public class University_Majors_SubjectGroup : DataEntity
     {
@@ -27,15 +22,15 @@ namespace EMS.Search.Entities
     public class University_Majors_SubjectGroupFilter : FilterEntity
     {
         public IdFilter Id { get; set; }
-        public long? University_MajorsId { get; set; }
-        public long? UniversityId { get; set; }
+        public IdFilter University_MajorsId { get; set; }
+        public IdFilter UniversityId { get; set; }
         public StringFilter UniversityName { get; set; }
         public StringFilter UniversityCode { get; set; }
-        public long? MajorsId { get; set; }
+        public IdFilter MajorsId { get; set; }
         public StringFilter MajorsCode { get; set; }
         public StringFilter MajorsName { get; set; }
         public string Year { get; set; }
-        public long? SubjectGroupId { get; set; }
+        public IdFilter SubjectGroupId { get; set; }
         public StringFilter SubjectGroupCode { get; set; }
         public DecimalFilter Benchmark { get; set; }
         public University_Majors_SubjectGroupOrder OrderBy { get; set; }

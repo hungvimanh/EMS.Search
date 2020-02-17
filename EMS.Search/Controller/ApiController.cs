@@ -24,7 +24,6 @@ namespace EMS.Search.Controller
     }
 
     [AllowAnonymous]
-    //[Authorize(Policy = "Permission")]
     public class ApiController : ControllerBase
     {
 

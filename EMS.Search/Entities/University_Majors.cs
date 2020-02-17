@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace EMS.Search.Entities
+﻿namespace EMS.Search.Entities
 {
     public class University_Majors : DataEntity
     {
@@ -20,10 +15,10 @@ namespace EMS.Search.Entities
     public class University_MajorsFilter : FilterEntity
     {
         public IdFilter Id { get; set; }
-        public long? UniversityId { get; set; }
+        public IdFilter UniversityId { get; set; }
         public StringFilter UniversityCode { get; set; }
         public StringFilter UniversityName { get; set; }
-        public long? MajorsId { get; set; }
+        public IdFilter MajorsId { get; set; }
         public StringFilter MajorsCode { get; set; }
         public StringFilter MajorsName { get; set; }
         public string Year { get; set; }

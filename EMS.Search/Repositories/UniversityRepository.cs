@@ -1,10 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using EMS.Search.Entities;
+using EMS.Search.Repositories.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EMS.Search.Entities;
-using EMS.Search.Repositories.Models;
 
 namespace EMS.Search.Repositories
 {
