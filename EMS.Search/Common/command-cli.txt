@@ -1,0 +1,1 @@
+dotnet ef dbcontext scaffold  "data source=.;initial catalog=EMS;persist security info=True;user id=sa;password=123456a@;multipleactiveresultsets=True;" Microsoft.EntityFrameworkCore.SqlServer -c EMSContext  -o Repositories/Models -f --no-build --schema UNV -t SubjectGroup --use-database-names --json
