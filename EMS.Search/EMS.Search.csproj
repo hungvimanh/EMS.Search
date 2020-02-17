@@ -5,6 +5,13 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+ <ItemGroup>
+   <Compile Remove="CodeTemplates\**" />
+   <Content Remove="CodeTemplates\**" />
+   <EmbeddedResource Remove="CodeTemplates\**" />
+   <None Remove="CodeTemplates\**" />
+ </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="EntityFrameworkCore.Scaffolding.Handlebars" Version="3.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.1" />
