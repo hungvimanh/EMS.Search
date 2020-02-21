@@ -23,17 +23,6 @@ namespace EMS.Search
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddMvc()
-            //    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-            //    .AddJsonOptions(options =>
-            //    {
-            //        options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
-            //        options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            //        options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
-            //        options.SerializerSettings.DefaultValueHandling = DefaultValueHandling.Include;
-            //        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-            //    });
-            //services.AddRazorPages();
             services.AddControllers()
                 .AddNewtonsoftJson(options =>
                   options.SerializerSettings.ContractResolver =
@@ -69,7 +58,7 @@ namespace EMS.Search
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Test API",
+                    Title = "Search APIs",
                     Description = "ASP.NET Core Web API"
                 });
             });
@@ -97,15 +86,15 @@ namespace EMS.Search
             });
             app.UseSwagger(c =>
             {
-                c.RouteTemplate = "api/TF/swagger/{documentname}/swagger.json";
+                c.RouteTemplate = "Search/swagger/{documentname}/swagger.json";
             });
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/api/TF/swagger/v1/swagger.json", "TF API");
-                c.RoutePrefix = "api/TF/swagger";
+                c.SwaggerEndpoint("/Search/swagger/v1/swagger.json", "Search API");
+                c.RoutePrefix = "Search/swagger";
             });
             
         }

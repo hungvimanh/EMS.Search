@@ -16,6 +16,9 @@ namespace EMS.Search.Controller
         public const string GetMajors = Base + "/majors/get";
         public const string ListMajors = Base + "/majors/list";
 
+        public const string GetSubjectGroup = Base + "/sg/get";
+        public const string ListSubjectGroup = Base + "/sg/list";
+
         public const string GetUniversity_Majors = Base + "/um/get";
         public const string ListUniversity_Majors = Base + "/um/list";
 

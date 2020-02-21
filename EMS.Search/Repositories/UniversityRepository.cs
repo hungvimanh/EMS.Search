@@ -105,7 +105,7 @@ namespace EMS.Search.Repositories
 
         public async Task<University> Get(long Id)
         {
-            University university = await eMSContext.University.Where(u => u.Id.Equals(Id)).Select(u => new University
+            University university = await eMSContext.University.Where(u => u.Id == Id).Select(u => new University
             {
                 Id = u.Id,
                 Code = u.Code,

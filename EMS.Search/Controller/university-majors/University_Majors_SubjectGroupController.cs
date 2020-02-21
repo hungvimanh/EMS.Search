@@ -69,24 +69,7 @@ namespace EMS.Search.Controller.university_majors
 
             List<University_Majors_SubjectGroup> University_Majors_Subjects = await University_Majors_SubjectGroupService.List(University_Majors_SubjectFilter);
 
-            List<University_Majors_SubjectGroupDTO> University_Majors_SubjectDTOs = University_Majors_Subjects.Select(u => new University_Majors_SubjectGroupDTO
-            {
-                Id = u.Id,
-                MajorsId = u.MajorsId,
-                MajorsCode = u.MajorsCode,
-                MajorsName = u.MajorsName,
-                UniversityId = u.UniversityId,
-                UniversityCode = u.UniversityCode,
-                UniversityName = u.UniversityName,
-                University_MajorsId = u.University_MajorsId,
-                SubjectGroupId = u.SubjectGroupId,
-                SubjectGroupCode = u.SubjectGroupCode,
-                SubjectGroupName = u.SubjectGroupName,
-                Benchmark = u.Benchmark,
-                Quantity = u.Quantity,
-                Note = u.Note,
-                Year = u.Year
-            }).ToList();
+            List<University_Majors_SubjectGroupDTO> University_Majors_SubjectDTOs = University_Majors_Subjects.Select(u => new University_Majors_SubjectGroupDTO(u)).ToList();
 
             return University_Majors_SubjectDTOs;
         }
